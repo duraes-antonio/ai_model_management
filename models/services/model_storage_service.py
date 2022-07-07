@@ -1,19 +1,21 @@
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import TypeVar, Optional
+
+from models.entity import Entity
 
 T = TypeVar('T')
 
 
-class ModelStorageService(ABC, Generic[T]):
+class ModelStorageService(ABC):
 
     @abstractmethod
-    def get_last(self) -> T:
+    def save(self, model_file_path: str) -> None:
         pass
 
     @abstractmethod
-    def save(self, model: T) -> T:
+    def download(self, model_id: str) -> Optional[Entity]:
         pass
 
     @abstractmethod
-    def get(self, model_id: str) -> T:
+    def download_last(self) -> Optional[Entity]:
         pass

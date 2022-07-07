@@ -1,21 +1,21 @@
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, List
+from typing import TypeVar, List, Dict
 
 T = TypeVar('T')
 
 
-class ModelResultsStorageService(ABC, Generic[T]):
+class ModelResultsStorageService(ABC):
 
     @abstractmethod
-    def get_all(self) -> List[T]:
+    def get_all(self) -> List[Dict]:
         pass
 
     @abstractmethod
-    def get(self, model_id: str) -> T:
+    def get(self, result_id: str) -> Dict:
         pass
 
     @abstractmethod
-    def save(self, model: T) -> T:
+    def save(self, result: Dict) -> Dict:
         pass
 
     @abstractmethod
